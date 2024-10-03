@@ -1,6 +1,6 @@
 export async function getData() {
   const url = "https://api-candidate.ogruposix.com/checkout/95BD9233-8FDC-48AD-B4C5-E5BAF7578C15";
-  const token = "2A50C22E-7954-4C73-9CF9-F6D298C047A7"; // Token da API
+  const token = "2A50C22E-7954-4C73-9CF9-F6D298C047A7";
 
   try {
     const response = await fetch(url, {
@@ -27,10 +27,10 @@ export async function getData() {
         headline: apiData.video_headline,
         subheadline: apiData.video_sub_headline || null,
       },
-      products: apiData.products || [], // Verificando se `products` existe antes de mapear
+      products: apiData.products || [],
     };
   } catch (error) {
     console.error("Erro ao obter dados da API:", error);
-    return { video: {}, products: [] }; // Retornando arrays e objetos vazios em caso de erro
+    return { video: {}, products: [] };
   }
 }

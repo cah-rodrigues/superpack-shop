@@ -5,9 +5,19 @@ import PropTypes from "prop-types";
 const Video = ({ url, headline, subheadline}) => {
   return(
     <div>
-      <iframe src="" frameBorder="0"></iframe>
+     
       <h1>{headline}</h1>
       {subheadline && <p>{subheadline}</p>}
+      <iframe 
+      width="500" 
+      height="300" 
+      src="https://www.youtube.com/embed/T5W3TJtYa2E" 
+      title="Star Wars Space Battles Only - HD" 
+      frameBorder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerPolicy="strict-origin-when-cross-origin" 
+      allowFullScreen>
+      </iframe>
     </div>
   );
 };

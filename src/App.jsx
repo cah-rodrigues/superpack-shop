@@ -43,6 +43,9 @@ function App() {
         <p>Carregando o vídeo...</p>  // Renderiza algo até os dados chegarem
       )}
       <ProductList products={products} onOpenModal={onOpenModal} />
+      {isModalOpen && (
+            <Modal onClose={() => setIsModalOpen(false)} product={selectedProduct} />
+        )}
     </div>
   );
 }
