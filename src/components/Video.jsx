@@ -1,10 +1,10 @@
-import React from "react";
 import PropTypes from "prop-types";
+import './Video.css';
 
 
 const Video = ({ url, headline, subheadline}) => {
   return(
-    <div>
+    <div className="video">
      
       <h1>{headline}</h1>
       {subheadline && <p>{subheadline}</p>}

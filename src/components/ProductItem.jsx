@@ -1,16 +1,18 @@
-import React from "react";
 import PropTypes from "prop-types";
+import './ProductItem.css'
 
-const ProductItem = ({ product, onOpenModal }) => {
+const ProductItem = ({ product, onSelect }) => {
     return (
-        <div>
+        <div className="item">
             <img src={product.image_url} alt={product.name} />
-            <p>{product.name}</p>
-            <p>R$ {product.price}</p>
-            {product.discount && <p>Desconto: R$ {product.discount}</p>}
-            {product.best_choice && <p>Melhor escolha!</p>}
-            <p>{product.freight}</p>
-            <button onClick={() => onOpenModal(product)}>Comprar</button>
+            <div className="content"> 
+                <p className="name">{product.name}</p>
+                <p className="price">R$ {product.price}</p>
+                {product.discount && <p className="discount">Desconto: R$ {product.discount}</p>}
+                {product.best_choice && <p className="choice">Melhor escolha!</p>}
+                <p className="freight">{product.freight}</p>
+            </div>
+            <button onClick={() => onSelect(product)}>Comprar</button>
         </div>
     );
 };
@@ -25,7 +27,7 @@ ProductItem.propTypes = {
         best_choice: PropTypes.bool,
         freight: PropTypes.string,
     }).isRequired,
-    onOpenModal: PropTypes.func.isRequired,
+    onSelect: PropTypes.func.isRequired
 };
 
 

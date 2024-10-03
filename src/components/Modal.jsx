@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
+import './Modal.css'
 
 
-const Modal = ({ product, onClose, onSubmit }) => {
+const Modal = ({ product, handleCloseModal, modalIsOpen, onSubmit }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,27 +25,42 @@ const Modal = ({ product, onClose, onSubmit }) => {
   };
 
   return (
-    <div className="modal">
+    <div className='wrapper'>
+    {modalIsOpen && ( <div className="modal">
+       <button onClick={handleCloseModal}>Fechar</button>
       <h2>Compra do produto: {product.name}</h2>
+     
+
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Nome" onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-        <input type="text" name="phone_number" placeholder="Telefone" onChange={handleChange} required />
-        <input type="text" name="street_number" placeholder="Número" onChange={handleChange} required />
-        <input type="text" name="street" placeholder="Rua" onChange={handleChange} required />
-        <input type="text" name="district" placeholder="Bairro" onChange={handleChange} required />
-        <input type="text" name="city" placeholder="Cidade" onChange={handleChange} required />
-        <input type="text" name="state" placeholder="Estado" onChange={handleChange} required />
+        <div className="input-group">
+          <input type="text" name="name" placeholder="Nome" onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+        </div>
+
+        <div className="input-group">
+          <input type="text" name="phone_number" placeholder="Telefone" onChange={handleChange} required />
+          <input type="text" name="street_number" placeholder="Número" onChange={handleChange} required />
+        </div>
+        <div className="input-group">
+          <input type="text" name="street" placeholder="Rua" onChange={handleChange} required />
+          <input type="text" name="district" placeholder="Bairro" onChange={handleChange} required />
+        </div>
+        <div className="input-group">
+          <input type="text" name="city" placeholder="Cidade" onChange={handleChange} required />
+          <input type="text" name="state" placeholder="Estado" onChange={handleChange} required />
+        </div>
         <button type="submit">Confirmar</button>
       </form>
-      <button onClick={onClose}>Fechar</button>
+      
+    </div>)}
     </div>
   );
 };
 
 Modal.propTypes = {
   product: PropTypes.object.isRequired,
-  onClose: PropTypes.func.isRequired,
+  modalIsOpen: PropTypes.bool.isRequired,
+  handleCloseModal: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 

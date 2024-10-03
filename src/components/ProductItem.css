@@ -1,0 +1,50 @@
+.item{
+    flex: 1;
+    border: 4px solid #3d4d2d;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.item img{
+    width: 200px;
+    border-radius: 50%;
+}
+
+.item button{
+    width: 128px;
+    height: 32px;
+    border-radius: 8px;
+    background-color: #A7C28B;
+    border: none;
+    border-color: white;
+    color: white;
+    font-weight: bold;
+    font-size: 1.20rem;
+}
+
+.item .content {
+    padding: 0.8rem 0;
+    text-align: center;
+
+}
+
+.item .content p{
+    font-size: 18px;
+    color: #1f2e10;
+}
+
+.item .content .name {
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+.item .content .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: rgb(219, 190, 23);
+}

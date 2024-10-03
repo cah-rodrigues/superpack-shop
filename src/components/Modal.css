@@ -1,0 +1,56 @@
+.wrapper {
+    position: relative;
+}
+
+.modal{
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 16px;
+    width: 720px;
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal h2{
+    text-align: center;
+}
+
+.modal form{
+    display: flex;
+    flex-direction: column;
+}
+
+.modal form .input-group{
+    margin: 1rem 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.modal form .input-group input{
+    height: 1.5rem;
+    padding: 0.25rem;
+    border-radius: 8px;
+    border-color: #A7C28B;
+
+}
+
+.modal form button{
+    margin: auto;
+    width: 128px;
+    height: 32px;
+    border-radius: 8px;
+    background-color: #A7C28B;
+    border: none;
+    border-color: white;
+    color: white;
+    font-weight: bold;
+    font-size: 1.20rem;
+}
