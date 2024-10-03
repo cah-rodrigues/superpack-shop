@@ -1,30 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ProductItem from './ProductItem';
+import React from "react";
+import ProductItem from "./ProductItem";
+import PropTypes from "prop-types";
 
-function ProductList({ products, onOpenModal }) {
+
+const ProductList = ({ products, onOpenModal }) => {
   return (
-    <section>
-      {products.map(product => (
-        <ProductItem key={product.product_id} product={product} onOpenModal={onOpenModal}/>
+    <div className="product-list">
+      {products.map((product) => (
+        <ProductItem
+          key={product.product_id}
+          product={product}
+          onOpenModal={onOpenModal}
+        />
       ))}
-    </section>
+    </div>
   );
-}
+};
 
 ProductList.propTypes = {
-  products: PropTypes.arrayOf(
-      PropTypes.shape({
-          product_id: PropTypes.string.isRequired,
-          name: PropTypes.string.isRequired,
-          price: PropTypes.string.isRequired,
-          discount: PropTypes.string,
-          best_choice: PropTypes.bool,
-          freight: PropTypes.string,
-          image_url: PropTypes.string.isRequired
-      })
-  ).isRequired,
-  onOpenModal: PropTypes.func,
+  products: PropTypes.array.isRequired,
+  onOpenModal: PropTypes.func.isRequired,
 };
 
 export default ProductList;

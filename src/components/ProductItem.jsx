@@ -17,15 +17,16 @@ const ProductItem = ({ product, onOpenModal }) => {
 
 ProductItem.propTypes = {
     product: PropTypes.shape({
-        product_id: PropTypes.string.isRequired,
+        product_id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
         image_url: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        price: PropTypes.string.isRequired,
-        discount: PropTypes.string,
+        price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        discount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]), 
         best_choice: PropTypes.bool,
         freight: PropTypes.string,
     }).isRequired,
     onOpenModal: PropTypes.func.isRequired,
 };
 
-export default ProductItem;
+
+export default ProductItem

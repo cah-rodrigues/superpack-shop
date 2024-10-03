@@ -1,67 +1,51 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import '../styles/Modal.css'
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-const Modal = ({ onClose, product }) => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone_number: '',
-        street_number: '',
-        street: '',
-        district: '',
-        city: '',
-        state: '',
-    });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
+const Modal = ({ product, onClose, onSubmit }) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone_number: "",
+    street_number: "",
+    street: "",
+    district: "",
+    city: "",
+    state: "",
+  });
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-        const response = await fetch('YOUR_API_ENDPOINT', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ ...formData, product_id: product.product_id }),
-        });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(formData, product.product_id);
+  };
 
-        if (response.ok) {
-            alert('Obrigado pela preferencia!');
-            onClose();
-        } else {
-            alert('Erro ao realizar a compra. Tente novamente.');
-        }
-    };
-
-    return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <h2>Preencha seus dados para a compra</h2>
-                <form onSubmit={handleSubmit}>
-                    <input type="text" name="name" placeholder="Nome" onChange={handleChange} required />
-                    <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-                    <input type="tel" name="phone_number" placeholder="Telefone" onChange={handleChange} required />
-                    <input type="text" name="street_number" placeholder="Número" onChange={handleChange} required />
-                    <input type="text" name="street" placeholder="Rua" onChange={handleChange} required />
-                    <input type="text" name="district" placeholder="Bairro" onChange={handleChange} required />
-                    <input type="text" name="city" placeholder="Cidade" onChange={handleChange} required />
-                    <input type="text" name="state" placeholder="Estado" onChange={handleChange} required />
-                    <button type="submit">Confirmar</button>
-                </form>
-                <button onClick={onClose}>Fechar</button>
-            </div>
-        </div>
-    );
+  return (
+    <div className="modal">
+      <h2>Compra do produto: {product.name}</h2>
+      <form onSubmit={handleSubmit}>
+        <input type="text" name="name" placeholder="Nome" onChange={handleChange} required />
+        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+        <input type="text" name="phone_number" placeholder="Telefone" onChange={handleChange} required />
+        <input type="text" name="street_number" placeholder="Número" onChange={handleChange} required />
+        <input type="text" name="street" placeholder="Rua" onChange={handleChange} required />
+        <input type="text" name="district" placeholder="Bairro" onChange={handleChange} required />
+        <input type="text" name="city" placeholder="Cidade" onChange={handleChange} required />
+        <input type="text" name="state" placeholder="Estado" onChange={handleChange} required />
+        <button type="submit">Confirmar</button>
+      </form>
+      <button onClick={onClose}>Fechar</button>
+    </div>
+  );
 };
 
 Modal.propTypes = {
-    onClose: PropTypes.func.isRequired,
-    product: PropTypes.object.isRequired,
+  product: PropTypes.object.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Modal;
